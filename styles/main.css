@@ -1,0 +1,13 @@
+input[type=checkbox] {
+  margin-left: 25px;
+  margin-right: 5px;
+}
+
+.filters {
+  background-color: #eeeeee;
+  padding: 5px;
+}
+
+button {
+  margin-left: 20px;
+}

@@ -1,0 +1,67 @@
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="styles/main.css">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+<script src="lib/constants.js"></script>
+<script src="lib/math_helpers.js"></script>
+<script src="lib/simple_csv_parser.js"></script>
+
+<script src="lib/parse_stocks.js"></script>
+<script src="lib/parse_trades.js"></script>
+
+<script src="lib/show_filters.js"></script>
+<script src="lib/filter_stocks.js"></script>
+<script src="lib/compute_summaries.js"></script>
+<script src="lib/compute_breakdowns.js"></script>
+<script src="lib/show_stock_summaries.js"></script>
+<script src="lib/show_stock_breakdowns.js"></script>
+<script src="main.js"></script>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row filters">
+    </div>
+
+    <div class="row">
+      <h3>Stocks summary</h3>
+      <table class="stock-summaries table table-striped table-bordered table-hover table-condensed">
+      </table>
+    </div>
+
+    <div class="row">
+        <table class="stock-breakdowns-all table table-striped table-bordered table-hover table-condensed">
+        </table>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Geo breakdown</h3>
+        <table class="stock-breakdowns-geo table table-striped table-bordered table-hover table-condensed">
+        </table>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Class breakdown</h3>
+        <table class="stock-breakdowns-class table table-striped table-bordered table-hover table-condensed">
+        </table>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Combined breakdown</h3>
+        <table class="stock-breakdowns-combo table table-striped table-bordered table-hover table-condensed">
+        </table>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
