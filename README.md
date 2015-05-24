@@ -1,4 +1,4 @@
-## Ovewview
+## Overview
 
 This tool can be used to obtain a better idea about your investment portfolio in stocks. It is most suitable for a portfolio consisting of stocks including ETFs.
 
