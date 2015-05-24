@@ -1,7 +1,7 @@
 var Main = {
   run: function(do_filter) {
-    ParseStocks.parse('stocks.csv', function(stocks) {
-      ParseTrades.parse('trades.csv', function(trades) {
+    ParseStocks.parse(Constants.STOCKS_FILE, function(stocks) {
+      ParseTrades.parse(Constants.TRADES_FILE, function(trades) {
         var filtered_stocks = stocks;
 
         if (do_filter) {
