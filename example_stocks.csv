@@ -2,6 +2,6 @@ symbol,is_us,stock_type,fund_manager,description,price,price_date
 BND,1,BOND,Vanguard,Total US Bond Index,81.85,2015-05-20
 GOOGL,1,STOCK,None,Google Inc,554.52,2015-05-22
 NNN,1,REIT,None,National Retail Properties,38.08,2015-05-22
-VXUS,0,STOCK,Vanguard,x,53.53,2015-05-20
-GE,1,STOCK,None,x,27.33,2015-05-20
+VXUS,0,STOCK,Vanguard,Ex-US stocks,53.53,2015-05-20
+GE,1,STOCK,None,General Electric,27.33,2015-05-20
 VSS,0,STOCK,Vanguard,International Small Cap,107.16,2015-05-20
