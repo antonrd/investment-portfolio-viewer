@@ -33,3 +33,7 @@ In the table with the total stats `Weighted cost` is an approximation for the do
 For example, if you spent $1000 at beginning of year 1, another $1000 at beginning of year 2 and so on for 5 years, it would not be completely fair to just take the return at the end of the 5th year and divide it by all the money invested ($5000). Some of this money was available to you earlier and theoretically could have been used for other investment purposes.
 
 `Weighted P/L` takes the weighted cost of the portfolio and uses it compute profit/loss, which in general should be higher than the simple `Unrealized P/L` value.
+
+## Screenshot
+Here is a screenshot of how the tool looks:
+![Stocks visualisation tool](demo_screenshot.png)
