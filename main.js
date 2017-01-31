@@ -21,6 +21,9 @@ var Main = {
         var stock_breakdowns = ComputeBreakdowns.getStockBreakdowns();
 
         ShowStockBreakdowns.show(stock_breakdowns);
+
+        var next_trades = ComputeNextTrades.compute(stock_breakdowns)
+        ShowNextTrades.show(next_trades);
       });
     });
   }
