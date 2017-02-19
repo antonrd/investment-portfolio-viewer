@@ -2,28 +2,30 @@ var Main = {
   run: function(do_filter) {
     ParseStocks.parse(Constants.STOCKS_FILE, function(stocks) {
       ParseTrades.parse(Constants.TRADES_FILE, function(trades) {
-        var filtered_stocks = stocks;
+        ParseDividends.parse(Constants.DIVIDENDS_FILE, function(dividends){
+          var filtered_stocks = stocks;
 
-        if (do_filter) {
-          filtered_stocks = FilterStocks.filter(stocks);
-        }
+          if (do_filter) {
+            filtered_stocks = FilterStocks.filter(stocks);
+          }
 
-        ShowFilters.show(stocks, filtered_stocks.map(function(value) {
-          return value.symbol;
-        }));
+          ShowFilters.show(stocks, filtered_stocks.map(function(value) {
+            return value.symbol;
+          }));
 
-        ComputeSummaries.init(filtered_stocks, trades);
-        var stock_summaries = ComputeSummaries.getStockSummaries();
+          ComputeSummaries.init(filtered_stocks, trades, dividends);
+          var stock_summaries = ComputeSummaries.getStockSummaries();
 
-        ShowStockSummaries.show(stock_summaries);
+          ShowStockSummaries.show(stock_summaries);
 
-        ComputeBreakdowns.init(stock_summaries, filtered_stocks);
-        var stock_breakdowns = ComputeBreakdowns.getStockBreakdowns();
+          ComputeBreakdowns.init(stock_summaries, filtered_stocks);
+          var stock_breakdowns = ComputeBreakdowns.getStockBreakdowns();
 
-        ShowStockBreakdowns.show(stock_breakdowns);
+          ShowStockBreakdowns.show(stock_breakdowns);
 
-        var next_trades = ComputeNextTrades.compute(stock_breakdowns)
-        ShowNextTrades.show(next_trades);
+          var next_trades = ComputeNextTrades.compute(stock_breakdowns)
+          ShowNextTrades.show(next_trades);
+        });
       });
     });
   }
