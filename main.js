@@ -1,33 +1,43 @@
 var Main = {
   run: function(do_filter) {
-    ParseStocks.parse(Constants.STOCKS_FILE, function(stocks) {
-      ParseTrades.parse(Constants.TRADES_FILE, function(trades) {
-        ParseDividends.parse(Constants.DIVIDENDS_FILE, function(dividends){
+    let parseStocks = new ParseStocks(Constants.STOCKS_FILE, function(stocks) {
+      let parseTrades = new ParseTrades(Constants.TRADES_FILE, function(trades) {
+        let parseDividends = new ParseDividends(Constants.DIVIDENDS_FILE, function(dividends){
           var filtered_stocks = stocks;
 
           if (do_filter) {
-            filtered_stocks = FilterStocks.filter(stocks);
+            let filterStocks = new FilterStocks(stocks);
+            filtered_stocks = filterStocks.filter(stocks);
           }
 
-          ShowFilters.show(stocks, filtered_stocks.map(function(value) {
+          let filters = new ShowFilters(stocks, filtered_stocks.map(function(value) {
             return value.symbol;
           }));
+          let showFilters = filters.show();
 
-          ComputeSummaries.init(filtered_stocks, trades, dividends);
-          var stock_summaries = ComputeSummaries.getStockSummaries();
+          let computeSummaries = new ComputeSummaries(filtered_stocks, trades, dividends);
+          let stockSummaries = computeSummaries.getStockSummaries();
 
-          ShowStockSummaries.show(stock_summaries);
+          let showStockSummaries = new ShowStockSummaries(stockSummaries);
+          let showSummaries = showStockSummaries.show();
 
-          ComputeBreakdowns.init(stock_summaries, filtered_stocks);
-          var stock_breakdowns = ComputeBreakdowns.getStockBreakdowns();
+          let computeBreakdowns = new ComputeBreakdowns(stockSummaries, filtered_stocks);
+          let stockBreakdowns = computeBreakdowns.getStockBreakdowns();
 
-          ShowStockBreakdowns.show(stock_breakdowns);
+          let showStockBreakdowns = new ShowStockBreakdowns(stockBreakdowns);
+          let showBreakdowns = showStockBreakdowns.show();
 
-          var next_trades = ComputeNextTrades.compute(stock_breakdowns)
-          ShowNextTrades.show(next_trades);
+          let computeNextTrades = new ComputeNextTrades(stockBreakdowns);
+          let nextTrades = computeNextTrades.computeTrades();
+
+          let showNextTrades = new ShowNextTrades(nextTrades);
+          let showTrades = showNextTrades.show();
         });
+        parseDividends.parse();
       });
+      parseTrades.parse();
     });
+    parseStocks.parse();
   }
 };
 
