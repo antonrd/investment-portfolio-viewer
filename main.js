@@ -14,7 +14,7 @@ class Main {
     parseStocks.parse();
   }
 
-  computeAndShow: function(dividends, stocks, trades, do_filter){
+  computeAndShow(dividends, stocks, trades, do_filter){
     let filtered_stocks = stocks;
 
     if (do_filter) {
