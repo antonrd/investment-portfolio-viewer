@@ -14,7 +14,7 @@ var Main = {
   },
 
   computeAndShow: function(dividends, stocks, trades, do_filter){
-    var filtered_stocks = stocks;
+    let filtered_stocks = stocks;
 
     if (do_filter) {
       let filterStocks = new FilterStocks(stocks);
