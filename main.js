@@ -1,5 +1,6 @@
-var Main = {
-  run: function(do_filter) {
+class Main {
+
+  run(do_filter) {
     let self = this;
     let parseStocks = new ParseStocks(Constants.STOCKS_FILE, function(stocks) {
       let parseTrades = new ParseTrades(Constants.TRADES_FILE, function(trades) {
@@ -11,9 +12,9 @@ var Main = {
       parseTrades.parse();
     });
     parseStocks.parse();
-  },
+  }
 
-  computeAndShow: function(dividends, stocks, trades, do_filter){
+  computeAndShow(dividends, stocks, trades, do_filter){
     var filtered_stocks = stocks;
 
     if (do_filter) {
@@ -56,5 +57,6 @@ var Main = {
       };
   }
 
-  Main.run(false);
+  let main = new Main(false);
+  main.run();
 })();
