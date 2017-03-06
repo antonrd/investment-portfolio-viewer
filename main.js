@@ -1,11 +1,10 @@
 class Main {
 
   run(do_filter) {
-    let self = this;
-    let parseStocks = new ParseStocks(Constants.STOCKS_FILE, function(stocks) {
-      let parseTrades = new ParseTrades(Constants.TRADES_FILE, function(trades) {
-        let parseDividends = new ParseDividends(Constants.DIVIDENDS_FILE, function(dividends) {
-          self.computeAndShow(dividends, stocks, trades, do_filter);
+    let parseStocks = new ParseStocks(Constants.STOCKS_FILE, (stocks) => {
+      let parseTrades = new ParseTrades(Constants.TRADES_FILE, (trades) => {
+        let parseDividends = new ParseDividends(Constants.DIVIDENDS_FILE, (dividends) => {
+          this.computeAndShow(dividends, stocks, trades, do_filter);
         });
         parseDividends.parse();
       });
@@ -22,7 +21,7 @@ class Main {
       filtered_stocks = filterStocks.filter(stocks);
     }
 
-    let filters = new ShowFilters(stocks, filtered_stocks.map(function(value) {
+    let filters = new ShowFilters(stocks, filtered_stocks.map( (value) => {
       return value.symbol;
     }));
     let showFilters = filters.show();
