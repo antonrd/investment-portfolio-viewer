@@ -57,6 +57,6 @@ class Main {
       };
   }
 
-  let main = new Main(false);
-  main.run();
+  let main = new Main();
+  main.run(false);
 })();
