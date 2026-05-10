@@ -29,7 +29,10 @@ class Main {
     let computeSummaries = new ComputeSummaries(filtered_stocks, trades, dividends);
     let stockSummaries = computeSummaries.getStockSummaries();
 
-    let showStockSummaries = new ShowStockSummaries(stockSummaries);
+    let showPortfolioCharts = new ShowPortfolioCharts(stockSummaries, trades, dividends);
+    showPortfolioCharts.show();
+
+    let showStockSummaries = new ShowStockSummaries(stockSummaries, trades);
     let showSummaries = showStockSummaries.show();
 
     let computeBreakdowns = new ComputeBreakdowns(stockSummaries, filtered_stocks);
@@ -63,6 +66,31 @@ class Main {
       };
   }
 
-  let main = new Main();
-  main.run(false);
+  const foreignCurrencies = Object.keys(Constants.CURRENCIES).filter(c => c !== Constants.DISPLAY_CURRENCY);
+
+  fetch(`https://api.frankfurter.dev/v1/latest?from=${Constants.DISPLAY_CURRENCY}&to=${foreignCurrencies.join(',')}`)
+    .then(r => r.json())
+    .then(data => {
+      for (const [cur, rate] of Object.entries(data.rates)) {
+        Constants.CURRENCIES[cur] = 1 / rate;
+      }
+      _showCurrencyInfo(true, data.date);
+      new Main().run(false);
+    })
+    .catch(() => {
+      _showCurrencyInfo(false, null);
+      new Main().run(false);
+    });
+
+  function _showCurrencyInfo(fromApi, date) {
+    const source = fromApi
+      ? `live rates from Frankfurter API (${date})`
+      : `fallback rates from constants.js (API unavailable)`;
+    const rates = Object.entries(Constants.CURRENCIES)
+      .filter(([c]) => c !== Constants.DISPLAY_CURRENCY)
+      .map(([c, r]) => `1 ${c} = ${MathHelpers.round2(r)} ${Constants.DISPLAY_CURRENCY}`)
+      .join(' &nbsp;|&nbsp; ');
+    $('#currency-info').html(`Currency rates: ${rates} &nbsp;&mdash;&nbsp; ${source}`);
+  }
+
 })();

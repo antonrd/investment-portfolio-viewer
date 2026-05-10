@@ -15,3 +15,16 @@ button {
 tr.soldout {
     background-color: #cccccc;
 }
+
+tbody.soldout-rows tr {
+    background-color: #f2f2f2;
+    color: #888;
+}
+
+tr.soldout-toggle-row td {
+    background-color: #e8e8e8;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: #555;
+    user-select: none;
+}

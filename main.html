@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -8,6 +9,7 @@
 <link rel="stylesheet" href="styles/main.css">
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
 <script src="lib/constants.js"></script>
 <script src="lib/math_helpers.js"></script>
@@ -24,6 +26,9 @@
 <script src="lib/compute_summaries.js"></script>
 <script src="lib/compute_breakdowns.js"></script>
 <script src="lib/show_invs_divs_per_period.js"></script>
+<script src="lib/compute_yearly_stats.js"></script>
+<script src="lib/show_stock_chart.js"></script>
+<script src="lib/show_portfolio_charts.js"></script>
 <script src="lib/show_stock_summaries.js"></script>
 <script src="lib/show_stock_breakdowns.js"></script>
 <script src="lib/show_next_trades.js"></script>
@@ -35,6 +40,23 @@
 
   <div class="container-fluid">
     <div class="row filters">
+    </div>
+
+    <div class="row">
+      <div id="currency-info" style="font-size:0.8em; color:#666; padding:4px 0 4px 4px; border-bottom:1px solid #ddd;"></div>
+    </div>
+
+    <div class="row">
+      <h3>Portfolio Charts</h3>
+      <button id="portfolio-charts-toggle" class="btn btn-default btn-sm">Show Portfolio Charts</button>
+      <div id="portfolio-charts-section" style="display:none; margin-top:12px;">
+        <label style="font-weight:normal; margin-bottom:8px; display:block;">
+          <input type="checkbox" id="bubble-active-only"> Active positions only
+        </label>
+        <canvas id="bubble-chart-canvas" height="80"></canvas>
+        <h4 style="margin-top:24px;">Per-year: invested, P/L &amp; dividends</h4>
+        <canvas id="yearly-chart-canvas" height="60"></canvas>
+      </div>
     </div>
 
     <div class="row">
