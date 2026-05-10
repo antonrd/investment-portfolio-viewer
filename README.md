@@ -15,10 +15,16 @@ cp lib/constants.example.js lib/constants.js
 Then edit `lib/constants.js` to set your values:
 - `NEXT_AMOUNT` — cash available to invest in the next period
 - `RATIOS` — your target allocation percentages (should sum to 100)
-- `CURRENCIES` — exchange rates relative to USD for any non-USD positions
+- `CURRENCIES` — fallback exchange rates relative to USD for any non-USD positions (see below)
 - `DISPLAY_CURRENCY` — the currency to display values in
 
 `lib/constants.js` is excluded from git so your personal values are never committed.
+
+### Currency rates
+
+On page load the tool attempts to fetch live exchange rates from the [Frankfurter API](https://api.frankfurter.dev). If the request succeeds, the rates in `CURRENCIES` are overwritten with the live values for that session. If the request fails (e.g. no internet connection), the hardcoded values from `lib/constants.js` are used as a fallback.
+
+Either way, a small info bar below the stock filter shows the rates in use and whether they came from the API or the fallback.
 
 ## How it works
 
