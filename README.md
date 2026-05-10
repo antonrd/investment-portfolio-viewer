@@ -37,7 +37,12 @@ will run a server on port 3001, which can then be accessed at `localhost:3001/ma
 ## Details on the data files
 For the trades you have several columns per trade. Possible actions are `BUY` and `SELL`, defined in `lib/constants.js`. The rest of the fields should be self-explanatory.
 
-For the stocks, this list should contain descriptions for all stocks mentioned in the trades file. You need to specify if the position covers only US entities or is international (`is_us`). The types that are expected for the moment are `STOCK`, `BOND`, `REIT`. These could be extended through the values in `lib/constants.js`. Let me know if you think that a stock type is missing.
+For the stocks, this list should contain descriptions for all stocks mentioned in the trades file. You need to specify the US exposure of each position via the `is_us` field, which accepts a value between `0` and `1`:
+- `1` — fully US (e.g. VOO, VTI)
+- `0` — fully international (e.g. VXUS, VEUD)
+- a value in between — for funds with mixed exposure (e.g. VT is ~0.63, IWDA is ~0.67)
+
+This allows the tool to correctly split the value of a position between the US and international allocation buckets. The types that are expected for the moment are `STOCK`, `BOND`, `REIT`. These could be extended through the values in `lib/constants.js`. Let me know if you think that a stock type is missing.
 
 Fund manager for stocks makes sense when it is an ETF. If it the stock of a given company the fields is not so relevant. This field is still not used by the tool. You can also provide a description of the stock. It will show up as a tooltip over the stock symbol. You need to specify a current price and date for the price, so that the tool can calculate returns.
 
