@@ -4,6 +4,22 @@ This tool can be used to obtain a better idea about your investment portfolio in
 
 The tools gives you overview statistics about separate positions, over groups of similar investments (stocks, bonds, REITs, etc) and for the whole portfolio. You can choose to exclude some of the positions and view the statistics without them.
 
+## Setup
+
+Before running the tool, you need to create your local configuration file:
+
+```bash
+cp lib/constants.example.js lib/constants.js
+```
+
+Then edit `lib/constants.js` to set your values:
+- `NEXT_AMOUNT` — cash available to invest in the next period
+- `RATIOS` — your target allocation percentages (should sum to 100)
+- `CURRENCIES` — exchange rates relative to USD for any non-USD positions
+- `DISPLAY_CURRENCY` — the currency to display values in
+
+`lib/constants.js` is excluded from git so your personal values are never committed.
+
 ## How it works
 
 For the moment you need to specify the trades made in your portfolio in one CSV file and descriptions of the existing positions you own in a separate CSV file. See the `example_stocks.csv` and `example_trades.csv` files for a better idea. You can specify the files in `lib/constants.js` but they should be in paths starting from the root of the project.

@@ -19,9 +19,11 @@
 
 <script src="lib/show_filters.js"></script>
 <script src="lib/filter_stocks.js"></script>
+<script src="lib/compute_invested_amounts_dividents.js"></script>
 <script src="lib/compute_next_trades.js"></script>
 <script src="lib/compute_summaries.js"></script>
 <script src="lib/compute_breakdowns.js"></script>
+<script src="lib/show_invs_divs_per_period.js"></script>
 <script src="lib/show_stock_summaries.js"></script>
 <script src="lib/show_stock_breakdowns.js"></script>
 <script src="lib/show_next_trades.js"></script>
@@ -37,6 +39,7 @@
 
     <div class="row">
       <h3>Stocks summary</h3>
+      <span class="stock-counts"></span>
       <table class="stock-summaries table table-striped table-bordered table-hover table-condensed">
       </table>
     </div>
@@ -70,6 +73,14 @@
       <div class="col-md-4">
         <h3>Next trades</h3>
         <table class="next-trades table table-striped table-bordered table-hover table-condensed">
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Investments & dividends per quarter/year</h3>
+        <table class="invs-divs-per-period table table-striped table-bordered table-hover table-condensed">
         </table>
       </div>
     </div>

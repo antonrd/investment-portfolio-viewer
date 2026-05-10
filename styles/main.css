@@ -11,3 +11,7 @@ input[type=checkbox] {
 button {
   margin-left: 20px;
 }
+
+tr.soldout {
+    background-color: #cccccc;
+}

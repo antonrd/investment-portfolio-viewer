@@ -43,6 +43,13 @@ class Main {
 
     let showNextTrades = new ShowNextTrades(nextTrades);
     let showTrades = showNextTrades.show();
+
+    let computeInvestmentsDividends = new ComputeInvestedAmountsDividends(trades, dividends);
+    let investmentsDividendsByPeriod = computeInvestmentsDividends.getSummaries();
+    console.log(investmentsDividendsByPeriod);
+
+    let showInvsDivsPerPeriod = new ShowInvsDivsPerPeriod(investmentsDividendsByPeriod);
+    showInvsDivsPerPeriod.show();
   }
 };
 
